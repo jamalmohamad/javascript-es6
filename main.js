@@ -1,6 +1,6 @@
 // what is "use strict" mode and what it does?
 // strict mode make debugging easier
-// we put it in string because it tell the browser 
+// we put it in string because it tell the browser
 "use strict";
 
 
@@ -27,7 +27,7 @@ if(theVal > 0) {
 
 
 // Does javascript pass variables by reference or by value;
-// the answer is, it pass primatives types string, bool, number, etc by value 
+// the answer is, it pass primatives types string, bool, number, etc by value
 // and it pass objects by reference
 
 // outside scope
@@ -118,6 +118,124 @@ myLogin(meth, ...opts);
 
 
 // what are template strings?
-
-var msg = 'hello world\'s my name is asim';
+var isBold = true;
+var msg = `hello my name is ${isBold ? "<b>asim</b>" : "asim"}`;
 console.log(msg)
+
+
+
+// what are template strings tag?
+// i18n - internalization
+// how to create them?
+
+function h1(strings, ...values) {
+    return "h1" + strings[0] + "</h1>";
+}
+var name = "asim";
+var place = "world";
+console.log(h1`hello ${place} my name is ${name}`);
+
+// h1`asim` // <h1>asim</h1>
+
+
+
+// What does the below print?
+//
+//     var fruits = ["Apples", "Oranges", "Bananas"];
+//     console.log(["Mangoes", ...fruits]);
+// ["Mangoes", "Apples", "Oranges", "Bananas"]
+
+
+// what are the different types in javascript?
+
+/*
+ primetive types
+ 6 types
+
+ Boolean   true/false
+ Number    int
+ String    "a"
+ Null      null
+ Undefined   undefined
+
+ non-premetive types
+ Object    new Object()
+
+
+ typeOf(x)
+ examples
+ typeof(1)  // number
+ typeof(null)  // object
+ typeof({})  // object
+
+
+
+ /*
+ what is the difference between dynamic language js and static language like java?
+ - with js the type of  variable is detemined at run time dynamically
+ - in java the type of a variable is determines tyatically as e write the code
+
+ */
+
+// in static we can manage memory
+
+
+// what is the difference between undefined and null?
+/*
+var a;
+console.log(a)
+
+undefined - is used by js to show that variable is not initialized and have no type
+null -  only a programmer set the null not js
+
+in js null is a value, in java null is not a value
+
+null == undefined return true we are comparing a value not types
+*/
+
+
+/* what is the difference between == and ===?
+== check only the values between two elements
+=== strict equal compare the type and the value for two elements
+
+'' == '0'  false
+0 === ''   true
+0 == '0'   true
+0 === ''   false  the value and the type not the same
+0 === '0'  false   the value and the type not the same
+
+
+Boolean('false')  true
+*/
+
+
+/*
+
+what is the type of NaN?   // "number"
+what is NaN and how can we check for it?
+"abc"/4    NaN
+NaN == 1   false
+NaN == false
+NaN == NaN  // false strange lol
+
+isNaN(NaN) true
+isNaN("A") true lol
+isNaN("1")  false
+
+NaN == NaN false
+
+interviewer lookin for how to check if the variable is NaN?
+var a == NaN  // undefined
+a !== a  true
+a = 1 // 1
+a !== a   // false
+a = 'a' // "a"
+a != a // false
+*/
+
+
+/* what are the different scopes in javascript?
+
+
+
+*/

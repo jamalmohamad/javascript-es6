@@ -236,6 +236,236 @@ a != a // false
 
 /* what are the different scopes in javascript?
 
+scopes
+- function or local scope variable
 
+function moo() {
+var foo = 1;
+}
+console.log(foo)  foo is not exist thus it will gives error and it is outside the function
+- var making global variable in js
 
+- block level scope variable - comes to es6
 */
+{
+  var a = "block";
+}
+console.log(a);  // undefined
+
+{
+  let b = "block";
+}
+console.log(b);  // error will throw a is not defined because we used let keyword
+
+
+// what is the difference between let, const, and var?
+/*
+* let a;     once declared we can not assign any thing later
+* const a;   similar to let, but we can use the variable later for re-assign
+* var a;     it is declared in global scope and we can use it everywhere with re assignation.
+*
+* **/
+// what is variable hoisting?
+// we can declare let,var, const anywhere in the file in js, js under the hood put the declarations in the top
+// hoisting means automatic hoisting for the delcarations variable
+
+fooo();
+
+function fooo() {
+    var a ;
+    console.log(a);
+    a = 1;
+}
+
+// what is scope chain?
+// function scope they can nested inside other function
+// first look into inner scope then it go outer then outer and outer
+
+
+// nested functions
+// they will trick you up, they will ask what it will print
+function roo2() {
+    console.log(myVar2);  // undersolved myVar2 variable
+}
+
+function goo2() {
+    var myVar2 = 1;
+    roo2();
+
+}
+
+function goo() {
+    var myVar = 1;
+    function roo() {
+        console.log(myVar);
+        function too() {
+            console.log(myVar);
+        }
+
+        too();
+    }
+    roo();
+
+}
+goo();
+
+
+
+// what is an IIFE and why might you use it?
+// IIFE - Immediatley Invoked Function Expression
+// anonymous function
+(function() {
+    var thing = {'hello': 'other'};
+    console.log("other: ", thing);
+})();
+
+
+// what are function closures?
+// a function that return a function currying
+// clousre - the function that return it keep the reference to its variable
+// here the closure is text
+function sayHello(name) {
+    var text = 'Hello' + name;
+    return function() {
+        console.log(text);
+    }
+};
+
+var sayAsim = sayHello("Asim");
+sayAsim();
+
+
+// closure skill test
+var doo = [];
+for(var i =0; i < 10; i++) {
+    doo[i] = function() { return i };
+}
+console.log(doo[0]());
+console.log(doo[1]());
+console.log(doo[2]());
+
+// the output will be 10 for all
+// we will solve it with IIFE
+var doo2 = [];
+for(var i =0; i < 10; i++) {
+    (function() {
+        var y = i;
+        doo2[i] = function() { return i };
+     })();
+    }
+
+console.log(doo2[0]());
+console.log(doo2[1]());
+console.log(doo2[2]());
+// the output will be 0 to 10
+
+
+// destructuring
+const obj = {first: 'Asim', last: 'Hussain', age: 42};
+const {first: f, age: ag} = obj;   //destructuring
+
+console.log(f);
+console.log(ag);
+
+
+// array destructuring
+const arr = ['a', 'b'];
+const [x, y] = arr;
+
+console.log(x);
+console.log(y);
+
+// function ff({x=0}) {
+//   console.log(x);
+// }
+// ff({x=1});
+
+
+// What are the different ways you can loop with for?
+
+let array = [1,2,3];
+// for
+for(let i = 0; i <array.length; i++) {
+  console.log(array[i]);
+}
+
+// foreach
+// One of the disadvantages of forEach is that you cannot use continue or break and return statements don't behave as you might expect.
+array.forEach((value) => {
+  console.log(value);
+})
+
+// for-in
+// objects
+var obj = {a:1, b:2};
+for(let prop in obj) {
+    console.log(prop);
+}
+
+// for-of
+// array
+let array = [10,20, 30];
+for(let value of array) {
+    console.log(value);
+    console.log(typeof(value));
+}
+
+
+// what does this keyword means?
+console.log(this); // will print a global window object
+this.asim = 1;  // is setting asim as a global window object
+
+console.log(this.asim);
+console.log(window.asim);
+
+function checkThis() {
+    console.log(this);
+}
+checkThis();
+
+var asim = {
+    checkThis: function() {
+        console.log(this);
+    }
+};
+asim.checkThis();  // isn't pointing to global object but it pointing to object asim
+
+// in js this is determined by calling a conttext,
+
+
+
+// what do the functions call, bind and apply do?
+
+
+// what is a fat arrow function?
+// first class function is called anonymous function
+setTimeout(function() {
+    console.log("setTimeout called!");
+}, 1000);
+
+
+let callback = function() {
+    console.log("setTimeout called!");
+}
+
+
+var setTimeOut = (timeout) => {
+    console.log()
+};
+setTimeOut(1000);
+
+// what is the prototype chain?
+
+
+// what is the difference between prototypal and classical inheritance?
+
+
+// what is the Constructor OO pattern?
+
+
+// what is the Prototype OO pattern?
+
+
+// How do you use the class and extends keywords?
+
+

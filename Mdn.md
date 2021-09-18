@@ -158,3 +158,4 @@ In expressions involving numeric and string values with the + operator, JavaScri
 x = 'The answer is ' + 42 // "The answer is 42"
 y = 42 + ' is the answer' // "42 is the answer"
 ```
+
